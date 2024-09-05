@@ -1,4 +1,4 @@
-module github.com/ez-request
+module github.com/bimonugraraga/ez-request
 
 go 1.19
 
