@@ -74,6 +74,11 @@ func (r *RequestParams) EzRetriableRequest() (*http.Response, error) {
 	// Retry when error
 	for i := 0; i < r.Attempts; i++ {
 		time.Sleep(time.Millisecond * time.Duration(r.BackoffMs))
+		req, err := r.createRequest()
+		if err != nil {
+			continue
+		}
+
 		res, err = r.EzDoIt(req, httpClient)
 		if err == nil {
 			return res, nil
